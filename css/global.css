@@ -1,0 +1,35 @@
+html {
+  font-size: 16px;
+}
+
+ol {
+  padding-inline-start: 15px;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.rounded {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+/* overrides */
+
+.button.button__accent:hover {
+    background-color: transparent;
+    outline: #06d19c;
+    color: #06d19c;
+}
+
+.navbar__logo {
+  height: 75%;
+}
+
+/* font awesome */
+
+i.fas, i.far {
+  width: 20px;
+}
+

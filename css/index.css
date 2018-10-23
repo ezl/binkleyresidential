@@ -9,22 +9,11 @@
     margin: 20px 10px;
 }
 
-.buysell .button:hover {
-    background-color: transparent;
-    outline: #06d19c;
-    color: #06d19c;
-}
-
-/* font awesome */
-
-i.fas, i.far {
-  width: 20px;
-}
 
 /* overrides */
 .hero__content{
-  min-height: calc( 90vh - 50px);
-  padding: calc( 60px) 0;
+  min-height: 0;
+  padding: 30px 0;
 }
 
 .hero {
