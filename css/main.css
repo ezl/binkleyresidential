@@ -1,0 +1,8 @@
+.hero__center__logo {
+  max-width: 180px;
+}
+
+/* overrides */
+.hero__text {
+  padding-top: 2em;
+}
