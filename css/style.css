@@ -522,7 +522,7 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
   margin-bottom: 1.4em;
   display: block; }
   input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus {
-    border-color: rgba(108, 99, 255, 0.5);
+    border-color: rgba(0, 116, 228, 0.5);
     outline: 0;
     background-color: #ffffff; }
 
@@ -543,7 +543,7 @@ textarea {
   min-height: 8em;
   outline: 0; }
   textarea:focus {
-    border-color: rgba(108, 99, 255, 0.5);
+    border-color: rgba(0, 116, 228, 0.5);
     outline: 0;
     background-color: #ffffff; }
 
