@@ -2,7 +2,40 @@
   max-width: 180px;
 }
 
+.buysell {
+  padding-bottom: 90px;
+}
+.buysell .button {
+    margin: 20px 10px;
+}
+
+.buysell .button:hover {
+    background-color: transparent;
+    outline: #06d19c;
+    color: #06d19c;
+}
+
+/* font awesome */
+
+i.fas, i.far {
+  width: 20px;
+}
+
 /* overrides */
+.hero__content{
+  min-height: calc( 90vh - 50px);
+  padding: calc( 60px) 0;
+}
+
+.hero {
+  box-shadow: none;
+}
 .hero__text {
   padding-top: 2em;
 }
+
+.landing__section:nth-child(even) {
+  background-color: #f7f7f7;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee; }
+
