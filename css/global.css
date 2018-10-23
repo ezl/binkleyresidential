@@ -10,6 +10,10 @@ ol {
   width: 100%;
 }
 
+.left-justify {
+  text-align: left;
+}
+
 .rounded {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
