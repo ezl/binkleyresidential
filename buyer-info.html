@@ -29,62 +29,106 @@
                 <div class="auth__auth">
                     <h1 class="auth__title">Get Started</h1>
                     <p class='left-justify'>Start by sending us some basic information, then we'll contact you ASAP to set up an in person coffee meeting to better understand your needs.</p>
-                    <form method='get' action="buyer-success.html" autocompelete="new-password" role="presentation" class="form">
+                    <form method='get'
+                          class="form"
+                          action="https://bo1w62wl75.execute-api.us-east-1.amazonaws.com/dev/process-form"
+                          role="presentation"
+                          >
                        <label for="first">Name</label>
                         <div class="double">
                           <div class="half">
-                             <input type="text" id="first" placeholder="First">
+                             <input type="text" name='firstName' placeholder="First">
                           </div>
                           <div class="half">
-                            <input type="text" id="second" placeholder="Last">
+                            <input type="text" name='lastName' placeholder="Last">
                           </div>
                         </div>
-                        <label>Birthday</label>
+                        <label>Birthdate</label>
                         <div class="double">
                           <div class="half">
-                            <select>
+                            <label>Month</label>
+                            <select name='dobMonth'>
                               <option value="Jan">January</option>
                               <option value="Feb">February</option>
                               <option value="Mar">March</option>
-                              <option value="">April</option>
-                              <option value="">May</option>
-                              <option value="">June</option>
-                              <option value="">July</option>
-                              <option value="">Aug</option>
-                              <option value="">September</option>
-                              <option value="">October</option>
-                              <option value="">November</option>
-                              <option value="">December</option>
+                              <option value="Apr">April</option>
+                              <option value="May">May</option>
+                              <option value="Jun">June</option>
+                              <option value="Jul">July</option>
+                              <option value="Aug">Aug</option>
+                              <option value="Sep">September</option>
+                              <option value="Oct">October</option>
+                              <option value="Nov">November</option>
+                              <option value="Dec">December</option>
                             </select>
                           </div><!-- /half -->
                           <div class="half">
                             <div class="double">
                               <div class="half">
-                                <input type="text" id="second" placeholder="Day">
+                                <label>Day</label>
+                                <input type="text" name='dobDay'>
                               </div><!-- /half -->
                               <div class="half">
-                                <input type="text" id="second" placeholder="Year">
+                                <label>Year</label>
+                                <input type="text" name='dobYear'>
                               </div><!-- /half -->
                             </div><!-- /double -->
                           </div><!-- /half -->
                         </div><!-- /double -->
-                        <label>Select</label>
-                        <select>
-                          <option value="1">Option 1</option>
-                          <option value="2">Option 2</option>
-                          <option value="3">Option 3</option>
-                        </select>
-                        <input name="email" class="fakefield">
                         <label>Email</label>
-                        <input type="text" name="email" id='email' placeholder="you@example.com">
+                        <input type="email" name="email" placeholder="you@example.com">
+                        <label>Current Address</label>
+                        <input type="text" name="currentAddressStreet" placeholder="123 Sample Street">
+                        <div class="double">
+                          <div class="half">
+                            <label>City</label>
+                            <input type="text" name="currentAddressCity" placeholder="Chicago">
+                          </div><!-- half -->
+                          <div class="half">
+                            <div class="double">
+                              <div class="half">
+                                <label>State</label>
+                                <select name="currentAddressState">
+                                  <option value="IL">IL</option>
+                                  <option value="IN">IN</option>
+                                  <option value="MI">MI</option>
+                                  <option value="MW">MW</option>
+                                  <option value="GTFO">GTFO</option>
+                                </select>
+                              </div><!-- /half -->
+                              <div class="half">
+                                <label>Zip Code</label>
+                                <input type="text" name="currentAddressZipCode" placeholder="Zip">
+                              </div><!-- /half -->
+                            </div><!-- double -->
+                          </div><!-- half -->
+                        </div><!-- /double -->
                         <button type='submit' class="button button__accent fullwidth">Get Started</button>
                     </form>
+                    <p id="js-form-response"></p>
                 </div>
             </div>
         </div>
     </div>
 
+<script>
+(() => {
+  const form = document.querySelector('form');
+  const formResponse = document.querySelector('js-form-response');
 
+  form.onsubmit = e => {
+    e.preventDefault();
+
+    // Prepare data to send
+    const data = {};
+    const formElements = Array.from(form);
+    formElements.map(input => (data[input.name] = input.value));
+
+    // Log what our lambda function will receive
+    console.log(JSON.stringify(data));
+  };
+})();
+</script>
 
 
 
