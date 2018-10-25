@@ -1,0 +1,25 @@
+{
+  "name": "binkleyresidential",
+  "version": "1.0.0",
+  "description": "Evie ====",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.342.0",
+    "serverless": "^1.32.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serverless": "serverless"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezl/binkleyresidential.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ezl/binkleyresidential/issues"
+  },
+  "homepage": "https://github.com/ezl/binkleyresidential#readme"
+}

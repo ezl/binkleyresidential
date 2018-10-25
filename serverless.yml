@@ -1,0 +1,29 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: binkley-residential-form-handler
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs8.10
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ses:SendEmail"
+      Resource: ["*"]
+
+
+# The `functions` block defines what code to deploy
+functions:
+  processForm:
+    handler: handler.processForm
+    events:
+      - http:
+          path: process-form
+          method: post
+          cors: true

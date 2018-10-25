@@ -29,7 +29,7 @@
                 <div class="auth__auth">
                     <h1 class="auth__title">Get Started</h1>
                     <p class='left-justify'>Start by sending us some basic information, then we'll contact you ASAP to set up an in person coffee meeting to better understand your needs.</p>
-                    <form method='get'
+                    <form method='post'
                           class="form"
                           action="https://bo1w62wl75.execute-api.us-east-1.amazonaws.com/dev/process-form"
                           role="presentation"
@@ -78,7 +78,7 @@
                         <label>Email</label>
                         <input type="email" name="email" placeholder="you@example.com">
                         <label>Current Address</label>
-                        <input type="text" name="currentAddressStreet" placeholder="123 Sample Street">
+                        <input type="text" name="currentAddressStreet" placeholder="123 Sample Street, Unit #3F">
                         <div class="double">
                           <div class="half">
                             <label>City</label>
@@ -97,15 +97,17 @@
                                 </select>
                               </div><!-- /half -->
                               <div class="half">
-                                <label>Zip Code</label>
+                                <label>Zip</label>
                                 <input type="text" name="currentAddressZipCode" placeholder="Zip">
                               </div><!-- /half -->
                             </div><!-- double -->
                           </div><!-- half -->
                         </div><!-- /double -->
+                        <p id="js-form-error-message" style='display:none;  width:100%; color:red;'>
+                          Oh no! Something went wrong. Please try again. 😭
+                        </p>
                         <button type='submit' class="button button__accent fullwidth">Get Started</button>
                     </form>
-                    <p id="js-form-response"></p>
                 </div>
             </div>
         </div>
@@ -114,7 +116,7 @@
 <script>
 (() => {
   const form = document.querySelector('form');
-  const formResponse = document.querySelector('js-form-response');
+  const formResponse = document.querySelector('#js-form-error-message');
 
   form.onsubmit = e => {
     e.preventDefault();
@@ -126,11 +128,32 @@
 
     // Log what our lambda function will receive
     console.log(JSON.stringify(data));
+
+    // Construct an HTTP request
+    var xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action, true);
+    xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+    // Send the collected data as JSON
+    xhr.send(JSON.stringify(data));
+
+    // Callback function
+    xhr.onloadend = response => {
+      if (response.target.status === 200) {
+        // The form submission was successful
+        form.reset();
+        window.location = 'buyer-success.html';
+      } else {
+        // The form submission failed
+        formResponse.style.display = 'block'
+        console.error(JSON.parse(response.target.response).message);
+      }
+    };
   };
 })();
+
 </script>
-
-
 
 <script src='js/app.min.js'></script>
 </body>
