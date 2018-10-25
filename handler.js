@@ -10,7 +10,7 @@ function sendEmail(formData, callback) {
     Source: 'ericzliu@gmail.com', // SES SENDING EMAIL
     ReplyToAddresses: [formData.reply_to],
     Destination: {
-      ToAddresses: ['ericzliu@gmail.com'], // SES RECEIVING EMAIL
+      ToAddresses: ['nathan@nathanbinkley.com', 'kevin@kevinbinkleyrealestate.com'], // SES RECEIVING EMAIL
     },
     Message: {
       Body: {
@@ -22,7 +22,10 @@ First Name: ${formData.firstName}
 Last Name: ${formData.lastName}
 Date of Birth: ${formData.dobMonth} ${formData.dobDay}, ${formData.dobYear}
 Email: ${formData.email}
-Current Address: ${formData.currentAddressStreet}`,
+Current Address:
+   ${formData.currentAddressStreet}
+   ${formData.currentAddressCity} ${formData.currentAddressState} ${formData.currentAddressZipCode}
+`,
         },
       },
       Subject: {
